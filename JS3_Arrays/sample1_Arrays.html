@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arrays Practice</title>
 </head>
+
 <body>
-    
+
 
     <script>
-        
+
+        // array used to handle multiple items
+        var players = ["Rahul", "Rohit", "Kohli"];
+
+        // Array Methods
+        players.push("Pant")  // 1. PUSH method will add at the last
+        players.unshift("Gill")  // 2. UNSHIFT method will add at the first
+        players.splice(1, 0, "sky")  // 3. SPLICE method will add/delete the value at the specified position
+        players.splice(1, 1, "DK")
+
+        players.pop(); // 4. POP method will remove the value at the last
+        players.shift();  // 5. SHIFT method will remove the value at the first
+        players.sort();  // 6. SORT method will be in alphabetical order
+        players.reverse(); // 7. REVERSE method will be in reverse way
+        for (i = 0; i < players.length; i++) {
+            console.log(players[i])
+        }
+
+
+
+        /*
+                ES6
+        */
+
+       players.forEach((playerNames,index,arr)=>{
+        console.log(playerNames+" : "+index);
+        console.log(arr);
+       })
     </script>
 </body>
+
 </html>
