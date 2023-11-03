@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects Practice</title>
+</head>
+<body>
+    <h2 style="text-align: center;">Objects Practice</h2>
+
+
+    <script>
+        // creating an object  - Literal way
+        var myDetails = {
+            fName : "Naveen",
+            mName : "Babu",
+            lName : "Bellam",
+            fullName : "",
+            subjects : {}
+        }
+
+        myDetails.fullName = "Bellam Naveen Kumar";
+        myDetails.mobileNumber = 9398457833;
+        myDetails['language'] = "Telugu";
+        myDetails.subjects.maths = 50;
+        myDetails.subjects['Telugu'] = 100;
+
+
+        //console.log(myDetails);
+
+        for(a in myDetails){
+            console.log(a +" : "+ myDetails[a]);
+        }
+        console.log(myDetails.subjects);
+
+        // inner objects
+        for(b in myDetails.subjects){
+            console.log(b +" : "+ myDetails.subjects[b]);
+        }
+
+        // 2. BuiltIn way
+        var myDetails1 = new Object({fname:"Venky",lname:"kumar"})
+        console.log(myDetails1);
+
+        // 3. constructor function
+        function empDetails(fname,lname){
+            this.fname = fname,
+            this.lname = lname
+        }
+        var myDetails2 = new empDetails("Ratna","Kiran");
+        console.log(myDetails2)
+
+        // 4. class constructor
+
+        class User{
+            constructor(fname,lname){
+                this.fname = fname,
+                this.lname = lname
+            }
+        }
+
+        var myDetails3 = new User("Prasad" , "Pilla");
+        console.log(myDetails3);
+</script>
+</body>
+</html>
