@@ -13,7 +13,7 @@
     <script>
 
         // array used to handle multiple items
-        var players = ["Rahul", "Rohit", "Kohli"];
+        var players = ["Rahul", "Rohit", "Kohli", "Gill", "Pant", "SKYS"];
 
         // Array Methods
         players.push("Pant")  // 1. PUSH method will add at the last
@@ -35,10 +35,64 @@
                 ES6
         */
 
-       players.forEach((playerNames,index,arr)=>{
-        console.log(playerNames+" : "+index);
-        console.log(arr);
-       })
+        players.forEach((playerNames, index, arr) => {
+            console.log(playerNames + " : " + index);
+            console.log(arr);
+        })
+
+        // map method
+        var allIndianPlayers = players.map((playerNames, index, arr) => {
+            console.log(arr);
+            return playerNames + " - INDIA";
+        })
+        console.log(allIndianPlayers);
+
+        // find method - it return only the last value which satisfies the condition
+        var char4Players = players.find((playerNames) => {
+            return playerNames.length == 4;
+        })
+        console.log(char4Players);
+
+        // filter method - it returns all the values which satisfies the condition
+        var char4AllPlayers = players.filter((playerNames) => {
+            return playerNames.length == 4;
+        })
+        console.log(char4AllPlayers);
+
+        var personDetails = [
+            { name: "Naveen", age: 27, job: "software" },
+            { name: "Venky", age: 32, job: "software" },
+            { name: "Ruben", age: 72, job: "not-software" },
+            { name: "Mahesh", age: 54, job: "actor" }
+        ];
+
+
+        // some method - it will return true if condition satisfies, if not satisfies return false
+        var checkingPersonAgeAbove80 = personDetails.some((person) => {
+            return person.age > 80;
+        });
+        console.log(checkingPersonAgeAbove80);
+
+        var checkingSoftwarePersonDetail = personDetails.some((person) => {
+            return person.job == "software";
+        });
+        console.log(checkingSoftwarePersonDetail);
+
+        // every method - 
+        var checkingDetails = personDetails.every((person)=>{
+            return person.job !== "OKKKO"
+        })
+        console.log(checkingDetails);
+        // reduce method
+        var allPersonDetailsAge = personDetails.reduce((initialValue, person) => {
+            if (initialValue.age) {
+                return initialValue.age + person.age;
+            }
+            else {
+                return initialValue + person.age;
+            }
+        });
+        console.log(allPersonDetailsAge);
     </script>
 </body>
 
