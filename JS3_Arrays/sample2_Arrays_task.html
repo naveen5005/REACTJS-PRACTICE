@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays Practice Task</title>
+</head>
+<body>
+    <script>
+        var allIndianPlayers = [
+            {
+                name : "Rohit",
+                noOfRuns : 40,
+                noOfBalls : 24,
+                noOfFours : 6,
+                noOfSixes : 2,
+                strikeRate : 166.67
+            },
+            {
+                name : "Ghill",
+                noOfRuns : 23,
+                noOfBalls : 24,
+                noOfFours : 4,
+                noOfSixes : 1,
+                strikeRate : 95.83
+            },
+            {
+                name : "kohli",
+                noOfRuns : 101,
+                noOfBalls : 121,
+                noOfFours : 10,
+                noOfSixes : 0,
+                strikeRate : 83.47
+            },
+            {
+                name : "Iyer",
+                noOfRuns : 77,
+                noOfBalls : 87,
+                noOfFours : 7,
+                noOfSixes : 2,
+                strikeRate : 88.51
+            },
+            {
+                name : "Rahul",
+                noOfRuns : 8,
+                noOfBalls : 17,
+                noOfFours : 0,
+                noOfSixes : 0,
+                strikeRate : 47.06
+            },
+            {
+                name : "Sky",
+                noOfRuns : 22,
+                noOfBalls : 14,
+                noOfFours : 5,
+                noOfSixes : 0,
+                strikeRate : 157.14
+            },
+            {
+                name : "Jadeja",
+                noOfRuns : 29,
+                noOfBalls : 15,
+                noOfFours : 3,
+                noOfSixes : 1,
+                strikeRate : 193.33
+            }
+        ]
+
+        var extraRuns = {
+            b : 0,
+            lb : 2,
+            w : 22,
+            nb : 2,
+            p : 0
+        }
+        var result = 0;
+        for(a in extraRuns){
+            result+=extraRuns[a];
+        }
+        // 1. Total runs by all the players
+
+        var totalRuns = allIndianPlayers.reduce((initalRuns,nextRun)=>{
+            if(initalRuns.noOfRuns){
+                return initalRuns.noOfRuns + nextRun.noOfRuns;
+            }
+            else{
+                return initalRuns + nextRun.noOfRuns;
+            }
+        });
+        console.log("Total no of Runs scored by the Indian team is : " + (totalRuns + result));
+
+        // 2. Total Fours by all the players
+        var totalFours = allIndianPlayers.reduce((initialFours,nextFours)=>{
+            if(initialFours.noOfFours){
+                return initialFours.noOfFours + nextFours.noOfFours;
+            }
+            else{
+                return initialFours + nextFours.noOfFours;
+            }
+        });
+        console.log("Total no of Fours scored by the Indian team is : " + totalFours);
+
+        // 3. Total Sixes by all the players
+
+        var totalSixes = allIndianPlayers.reduce((initalSixes,nextSixes)=>{
+            if(initalSixes.noOfSixes){
+                return initalSixes.noOfSixes + nextSixes.noOfSixes;
+            }
+            else{
+                return initalSixes + nextSixes.noOfSixes;
+            }
+        });
+        console.log("Total no of Sixes scored by the Indian team is : " + totalSixes);
+
+
+        // 4. Lowest Runs scored Player
+        var lowestRun = allIndianPlayers.reduce((a,b)=>{
+            if(a.noOfRuns){
+                return Math.min(a.noOfRuns,b.noOfRuns);
+            }
+            else{
+                return Math.min(a,b.noOfRuns);
+            }
+        });
+
+        var lowestRunPlayer = allIndianPlayers.filter((playerName)=>{
+            if(playerName.noOfRuns == lowestRun){
+                return playerName;
+            }
+        });
+        lowestRunPlayer.forEach((player)=>{
+            console.log(player.name + " scored the lowest runs("+player.noOfRuns+ ") in the match.");
+        });
+
+        // 5. Highest Run scored player
+        var highestRuns = allIndianPlayers.reduce((a,b)=>{
+            if(a.noOfRuns){
+                return Math.max(a.noOfRuns,b.noOfRuns);
+            }
+            else{
+                return Math.max(a,b.noOfRuns);
+            }
+        });
+        var highestRunsPlayer = allIndianPlayers.filter((playerName)=>{
+            return playerName.noOfRuns == highestRuns;
+        });
+
+        highestRunsPlayer.forEach((player)=>{
+            console.log(player.name + " scored the highest runs("+player.noOfRuns+ ") in the match.");
+        });
+
+        // 6. Lowest strike rate scored player
+        var lowestStrikeRate = allIndianPlayers.reduce((a,b)=>{
+            if(a.strikeRate){
+                return Math.min(a.strikeRate,b.strikeRate);
+            }
+            else{
+                return Math.min(a,b.strikeRate);
+            }
+        });
+        var lowestStrikeRatePlayer = allIndianPlayers.filter((playerName)=>{
+            return playerName.strikeRate == lowestStrikeRate;
+        });
+        lowestStrikeRatePlayer.forEach((player)=>{
+            console.log(player.name + " scored the lowest strike rate ("+player.strikeRate+ ") in the match.");
+        });
+
+        // 7. Highest strike rate scored player
+        var highestStrikeRate = allIndianPlayers.reduce((a,b)=>{
+            if(a.strikeRate){
+                return Math.max(a.strikeRate,b.strikeRate);
+            }
+            else{
+                return a,b.strikeRate;
+            }
+        });
+        var highestStrikeRatePlayer = allIndianPlayers.filter((playerName)=>{
+            return playerName.strikeRate == highestStrikeRate;
+        });
+        highestStrikeRatePlayer.forEach((player)=>{
+            console.log(player.name + " scored the highest strike rate ("+player.strikeRate+ ") in the match.");
+
+        })
+    </script>
+</body>
+</html>
