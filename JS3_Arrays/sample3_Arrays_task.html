@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Task</title>
+</head>
+
+<body>
+
+    <script>
+        var allIndianBowlers = [
+            {
+                name: "Bumrah",
+                overs: 5,
+                maiden: 0,
+                runs: 14,
+                wickets: 0,
+                noBalls: 0,
+                wideBalls: 1,
+                eco: 2.80
+            },
+            {
+                name: "Siraj",
+                overs: 4,
+                maiden: 1,
+                runs: 11,
+                wickets: 1,
+                noBalls: 0,
+                wideBalls: 0,
+                eco: 2.80
+            },
+            {
+                name: "Jadeja",
+                overs: 9,
+                maiden: 1,
+                runs: 33,
+                wickets: 5,
+                noBalls: 0,
+                wideBalls: 0,
+                eco: 3.70
+            },
+            {
+                name: "Shami",
+                overs: 4,
+                maiden: 0,
+                runs: 18,
+                wickets: 2,
+                noBalls: 0,
+                wideBalls: 1,
+                eco: 4.50
+            },
+            {
+                name: "Kuldeep",
+                overs: 5.1,
+                maiden: 1,
+                runs: 7,
+                wickets: 2,
+                noBalls: 0,
+                wideBalls: 0,
+                eco: 1.40
+            }
+        ]
+
+        // 1. Total runs provided by the bowlers
+            var totalRunsByBowlers = allIndianBowlers.reduce((a,b)=>{
+                if(a.runs){
+                    return a.runs + b.runs;
+                }
+                else{
+                    return a+b.runs;
+                }
+            });
+
+            var totalWides = allIndianBowlers.reduce((a,b)=>{
+                if(a.wideBalls){
+                    return a.wideBalls+b.wideBalls;
+                }
+                else{
+                    return a+b.wideBalls;
+                }
+            });
+
+            var totalNoBalls = allIndianBowlers.reduce((a,b)=>{
+                if(a.noBalls == 0){
+                    return a.noBalls+b.noBalls;
+                }
+                else{
+                    return a+b.noBalls;
+                }
+            });
+
+            var TotalOvers = allIndianBowlers.reduce((a,b)=>{
+                if(a.overs){
+                    return a.overs+b.overs;
+                }
+                else{
+                    return a+b.overs;
+                }
+            });
+
+            var totalWickets = allIndianBowlers.reduce((a,b)=>{
+                if(a.wickets == 0){
+                    return a.wickets+b.wickets;
+                }
+                else{
+                    return a+b.wickets;
+                }
+            });
+            console.log("Total no of runs scored by the opponent team is : "+totalRunsByBowlers);
+            console.log("Total no of runs scored by the opponent team(including extras) is : "+ (totalRunsByBowlers+totalNoBalls+totalWides) +" in "+TotalOvers+" overs, with fall of "+totalWickets+" wickets.");
+
+            // Highest maiden player details
+
+            var highestMaiden = allIndianBowlers.reduce((a,b)=>{
+                if(a.maiden == 0){
+                    return Math.max(a.maiden,b.maiden);
+                }
+                else{
+                    return Math.max(a,b.maiden);
+                }
+            });
+            var highestMaidenPlayers = allIndianBowlers.filter((playerName)=>{
+                return playerName.maiden == highestMaiden;
+            });
+            highestMaidenPlayers.forEach((player)=>{
+                console.log(player.name+" made "+player.maiden+" maiden in the match.")
+            });
+
+
+</script>
+</body>
+
+</html>
