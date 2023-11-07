@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var murali = {
+            fname : "murali",
+            lname : "krishna"
+        }
+        var naveen = {
+            fname : "naveen",
+            lname : "kumar"
+        }
+        function fullname(...abc){
+            console.log(this.fname+" "+this.lname);
+            console.log(abc)
+        }
+
+        // call will execute when it is called immediately
+        fullname.call(murali,1,2,3);
+
+        // Bind will create a new function, we need to call that fun to execute
+        var newFullnameFun = fullname.bind(naveen,1,2,3);
+        newFullnameFun();
+
+        fullname.apply(murali,[1,2,3])
+
+    </script>
+</body>
+</html>
