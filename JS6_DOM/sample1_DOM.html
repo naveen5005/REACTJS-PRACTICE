@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+
+
+    <div class="demo">
+        <h1 class="sample1">DOM Practice</h1>
+        <p class="sample1">Paragraph</p>
+        <h2 id="sample2">abc</h2>
+        <p class="sample1">This is a Pragraph</p>
+    </div>
+
+    <form action="">
+        <label for="">Gender</label><br>
+        <input type="radio" name="gender" class="userGender" value="Male">Male <br>
+        <input type="radio" name="gender" class="userGender" value="Female">Female <br>
+        <button type="button" onclick="checkingGender()">Submit</button>
+    </form>
+    <script>
+        document.getElementById("sample2").innerHTML = "Born to learn new things";
+        document.querySelector("#sample2").innerHTML = "changing back to abc";
+
+
+
+        function checkingGender() {
+
+            // Name : NodeList
+            var allRadioNames = document.getElementsByName("gender");
+            // console.log(allRadioNames);
+            allRadioNames.forEach((rdName) => {
+                if (rdName.checked) {
+                    console.log("Getting values from name : ", rdName.value);
+                }
+            });
+
+
+            // className : HTML Collection
+            var allRadioClassNames = document.getElementsByClassName("userGender");
+            // console.log(allRadioClassNames);
+            for (var a = 0; a <= allRadioClassNames.length - 1; a++) {
+                if (allRadioClassNames[a].checked) {
+                    console.log("Getting values from class : ", allRadioClassNames[a].value);
+                }
+            }
+
+
+            // Tag name : HTML Collection
+            var allRadioTagName = document.getElementsByTagName("input");
+            for (var a = 0; a <= allRadioTagName.length - 1; a++) {
+                if (allRadioTagName[a].checked) {
+                    console.log("Getting values from Tag name : ", allRadioTagName[a].value);
+                }
+            }
+
+            // Tag name(Query selector) : HTML Collection
+            var allRadioQuerySelectorAllTagName = document.querySelectorAll("input");
+            for (var a = 0; a <= allRadioQuerySelectorAllTagName.length - 1; a++) {
+                if (allRadioQuerySelectorAllTagName[a].checked) {
+                    console.log("Getting values from Query Selector All Tag name : ", allRadioQuerySelectorAllTagName[a].value);
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

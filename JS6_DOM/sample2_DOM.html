@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    
+    <script>
+        // using DOM methods we can create html and add it in the document
+        var allUsers = [
+    {
+        "id": 1,
+        "email": "BBussey@tortor.ly"
+    },
+    {
+        "id": 2,
+        "email": "GVinton@facilisis.io"
+    },
+    {
+        "id": 3,
+        "email": "BBrown@sed.net"
+    },
+    {
+        "id": 4,
+        "email": "SHarris@sit.net"
+    },
+    {
+        "id": 5,
+        "email": "JMedeiros@molestie.org"
+    },
+    {
+        "id": 6,
+        "email": "MWaltz@sed.net"
+    },
+    {
+        "id": 7,
+        "email": "ABenjamin@facilisis.com"
+    },
+    {
+        "id": 8,
+        "email": "ABeverage@nunc.net"
+    },
+    {
+        "id": 9,
+        "email": "SDavila@placerat.com"
+    },
+    {
+        "id": 10,
+        "email": "SUlvestad@non.io"
+    },
+    {
+        "id": 11,
+        "email": "MMonroe@odio.ly"
+    },
+    {
+        "id": 12,
+        "email": "ICollins@dolor.ly"
+    },
+    {
+        "id": 13,
+        "email": "ACorrell@vestibulum.com"
+    },
+    {
+        "id": 14,
+        "email": "KBachmeier@nec.gov"
+    },
+    {
+        "id": 15,
+        "email": "LTippit@augue.ly"
+    },
+    {
+        "id": 16,
+        "email": "AReiter@id.com"
+    },
+    {
+        "id": 17,
+        "email": "MBias@consectetur.net"
+    },
+    {
+        "id": 18,
+        "email": "DTippit@vitae.gov"
+    },
+    {
+        "id": 19,
+        "email": "AChelette@augue.ly"
+    },
+    {
+        "id": 20,
+        "email": "SChandler@egestas.com"
+    },
+    {
+        "id": 21,
+        "email": "LBohannon@risus.org"
+    },
+    {
+        "id": 22,
+        "email": "GSkiffington@et.net"
+    },
+    {
+        "id": 23,
+        "email": "TGilkerson@porttitor.gov"
+    },
+    {
+        "id": 24,
+        "email": "CKellams@morbi.org"
+    },
+    {
+        "id": 25,
+        "email": "STarbox@dolor.ly"
+    },
+    {
+        "id": 26,
+        "email": "SKane@lacus.org"
+    },
+    {
+        "id": 27,
+        "email": "CElliott@libero.ly"
+    },
+    {
+        "id": 28,
+        "email": "HMize@ante.gov"
+    },
+    {
+        "id": 29,
+        "email": "JMason@mattis.gov"
+    },
+    {
+        "id": 30,
+        "email": "TPitts@amet.io"
+    },
+    {
+        "id": 31,
+        "email": "EMartin@sed.net"
+    },
+    {
+        "id": 32,
+        "email": "PPonthieux@nec.net"
+    },
+    {
+        "id": 33,
+        "email": "MAlpert@et.com"
+    },
+    {
+        "id": 34,
+        "email": "SAuthier@at.org"
+    },
+    {
+        "id": 35,
+        "email": "JCorsaut@vestibulum.io"
+    },
+    {
+        "id": 36,
+        "email": "STraverse@ac.org"
+    },
+    {
+        "id": 37,
+        "email": "AGarcia@at.net"
+    },
+    {
+        "id": 38,
+        "email": "JVera@pretium.net"
+    },
+    {
+        "id": 39,
+        "email": "VBender@nec.com"
+    },
+    {
+        "id": 40,
+        "email": "MGorski@vitae.ly"
+    },
+    {
+        "id": 41,
+        "email": "RBlankenship@sapien.org"
+    },
+    {
+        "id": 42,
+        "email": "DSayin@sit.com"
+    },
+    {
+        "id": 43,
+        "email": "MZavala@egestas.com"
+    },
+    {
+        "id": 44,
+        "email": "VNguyen@pharetra.org"
+    },
+    {
+        "id": 45,
+        "email": "RBroughton@sed.gov"
+    },
+    {
+        "id": 46,
+        "email": "GCates@dolor.com"
+    },
+    {
+        "id": 47,
+        "email": "GBaker@id.gov"
+    },
+    {
+        "id": 48,
+        "email": "HKelliedugan@sed.com"
+    },
+    {
+        "id": 49,
+        "email": "MWelsh@consectetur.com"
+    },
+    {
+        "id": 50,
+        "email": "BElkins@porta.gov"
+    },
+    {
+        "id": 51,
+        "email": "SNewell@lacus.ly"
+    },
+    {
+        "id": 52,
+        "email": "COtto@et.com"
+    },
+    {
+        "id": 53,
+        "email": "JGullion@placerat.ly"
+    },
+    {
+        "id": 54,
+        "email": "AGray@aliquam.net"
+    },
+    {
+        "id": 55,
+        "email": "JShofstahl@odio.ly"
+    },
+    {
+        "id": 56,
+        "email": "LNeedham@fringilla.net"
+    },
+    {
+        "id": 57,
+        "email": "AFrutos@pharetra.ly"
+    },
+    {
+        "id": 58,
+        "email": "JBoyd@nec.net"
+    },
+    {
+        "id": 59,
+        "email": "AHancock@quis.com"
+    },
+    {
+        "id": 60,
+        "email": "JEseltine@pulvinar.ly"
+    },
+    {
+        "id": 61,
+        "email": "KNye@et.org"
+    },
+    {
+        "id": 62,
+        "email": "RNesbitt@dui.com"
+    },
+    {
+        "id": 63,
+        "email": "GHudgens@mattis.com"
+    },
+    {
+        "id": 64,
+        "email": "VBrandenburg@egestas.io"
+    },
+    {
+        "id": 65,
+        "email": "VBoblett@quis.com"
+    },
+    {
+        "id": 66,
+        "email": "EHydle@fringilla.org"
+    },
+    {
+        "id": 67,
+        "email": "DHarper@eros.net"
+    },
+    {
+        "id": 68,
+        "email": "ZGreen@sollicitudin.ly"
+    },
+    {
+        "id": 69,
+        "email": "KKallas@scelerisque.gov"
+    },
+    {
+        "id": 70,
+        "email": "DRussell@elit.gov"
+    },
+    {
+        "id": 71,
+        "email": "YNance@dolor.com"
+    },
+    {
+        "id": 72,
+        "email": "EHull@aenean.com"
+    },
+    {
+        "id": 73,
+        "email": "SWalsh@sagittis.io"
+    },
+    {
+        "id": 74,
+        "email": "EMullins@molestie.gov"
+    },
+    {
+        "id": 75,
+        "email": "BBullock@massa.ly"
+    },
+    {
+        "id": 76,
+        "email": "TWarrenfeltz@aliquam.net"
+    },
+    {
+        "id": 77,
+        "email": "DZhu@mattis.com"
+    },
+    {
+        "id": 78,
+        "email": "SGrimes@vestibulum.io"
+    },
+    {
+        "id": 79,
+        "email": "NSchatz@mi.org"
+    },
+    {
+        "id": 80,
+        "email": "AGriffin@tortor.ly"
+    },
+    {
+        "id": 81,
+        "email": "TPrice@ipsum.gov"
+    },
+    {
+        "id": 82,
+        "email": "ABelched@vitae.io"
+    },
+    {
+        "id": 83,
+        "email": "TNeville@et.com"
+    },
+    {
+        "id": 84,
+        "email": "TSpeer@sit.ly"
+    },
+    {
+        "id": 85,
+        "email": "FClark@sed.net"
+    },
+    {
+        "id": 86,
+        "email": "GBullock@etiam.net"
+    },
+    {
+        "id": 87,
+        "email": "GCates@tempor.io"
+    },
+    {
+        "id": 88,
+        "email": "GLallemont@amet.com"
+    },
+    {
+        "id": 89,
+        "email": "CScheider@lacus.gov"
+    },
+    {
+        "id": 90,
+        "email": "NHolmes@neque.ly"
+    },
+    {
+        "id": 91,
+        "email": "VBonita@pulvinar.io"
+    },
+    {
+        "id": 92,
+        "email": "SBrenner@lorem.gov"
+    },
+    {
+        "id": 93,
+        "email": "HKinder@in.com"
+    },
+    {
+        "id": 94,
+        "email": "PWing@mattis.net"
+    },
+    {
+        "id": 95,
+        "email": "LGuindin@malesuada.net"
+    },
+    {
+        "id": 96,
+        "email": "MHesters@ante.com"
+    },
+    {
+        "id": 97,
+        "email": "KSapp@at.net"
+    },
+    {
+        "id": 98,
+        "email": "CReviews@tincidunt.ly"
+    },
+    {
+        "id": 99,
+        "email": "BBudgell@lacus.ly"
+    },
+    {
+        "id": 100,
+        "email": "IGarascia@dolor.com"
+    }
+]
+        allUsers.forEach((user)=>{
+           var myHeading = document.createElement("h1");
+           document.body.appendChild(myHeading);
+           myHeading.innerHTML = user.email;
+        })
+
+        var changingh5 = document.querySelectorAll("h1");
+        console.log(changingh5);
+        changingh5[4].innerHTML = "Naveen Babu"
+        changingh5[4].style.backgroundColor = "red";
+        changingh5[4].style.color ="white";
+        changingh5[4].style.textAlign ="center";
+    </script>
+</body>
+</html>
