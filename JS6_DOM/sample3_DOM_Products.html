@@ -18,6 +18,8 @@
                 <th rowspan="2">Category</th>
                 <th rowspan="2">Image</th>
                 <th colspan="2">Rating</th>
+                <th rowspan="2">EDIT</th>
+                <th rowspan="2">DELETE</th>
             </tr>
             <tr>
                 <th>rate</th>
@@ -25,38 +27,79 @@
             </tr>
         </thead>
         <tbody>
-            
+
         </tbody>
     </table>
     <script src="./products.js"></script>
     <script>
-        // console.log(products);
-        products.forEach((prod) => {
-            console.log(prod);
-            var myTr = document.createElement("tr");
-            for (a in prod) {
-                var myTd = document.createElement("td");
-                if (a == "image") {
-                    var myImg = document.createElement("img");
-                    myImg.setAttribute("src", prod[a]);
-                    myImg.setAttribute("width", "150");
-                    myImg.setAttribute("height", "170");
-                    myTd.appendChild(myImg);
-                }
-                else if (a == "rating") {
-                    for(b in prod[a]){
-                        var myTd = document.createElement("td");
-                        myTd.innerHTML = prod[a][b];
-                        myTr.appendChild(myTd);
+
+        var allFilteredProducts = [];
+        function displayProducts(products) {
+            // console.log(products);
+
+            document.querySelector("tbody").innerHTML = "";
+            products.forEach((prod, i) => {
+                // console.log(prod);
+                var myTr = document.createElement("tr");
+                for (a in prod) {
+                    var myTd = document.createElement("td");
+                    if (a == "image") {
+                        var myImg = document.createElement("img");
+                        myImg.setAttribute("src", prod[a]);
+                        myImg.setAttribute("width", "150");
+                        myImg.setAttribute("height", "170");
+                        myTd.appendChild(myImg);
                     }
+                    else if (a == "rating") {
+                        for (b in prod[a]) {
+                            var myTd = document.createElement("td");
+                            myTd.innerHTML = prod[a][b];
+                            myTr.appendChild(myTd);
+                        }
+                    }
+                    else {
+                        myTd.innerHTML = prod[a];
+                    }
+                    myTr.appendChild(myTd);
                 }
-                else {
-                    myTd.innerHTML = prod[a];
-                }
-                myTr.appendChild(myTd);
+
+
+                var editTd = document.createElement("td");
+                var editBtn = document.createElement("button");
+                editBtn.innerHTML = "EDIT";
+                editTd.appendChild(editBtn);
+                myTr.appendChild(editTd);
+
+                var deleteTd = document.createElement("td");
+                var deleteBtn = document.createElement("button");
+                deleteBtn.innerHTML = "DELETE";
+                deleteBtn.setAttribute("onclick", "deleteProduct(" + i + ")");
+                deleteTd.appendChild(deleteBtn);
+                myTr.appendChild(deleteTd);
+
+                document.querySelector("tbody").appendChild(myTr);
+            })
+        }
+
+        function deleteProduct(i) {
+
+            if (allFilteredProducts.length == 0) {
+                allFilteredProducts = products.filter((prod, index) => {
+                    return index !== i;
+                })
+            }else{
+                allFilteredProducts = allFilteredProducts.filter((prod, index) => {
+                return index !== i;
+            })
             }
-            document.querySelector("tbody").appendChild(myTr);
-        })
+
+            console.log(allFilteredProducts)
+            displayProducts(allFilteredProducts);
+        }
+        displayProducts(products);
+
+
+
     </script>
 </body>
 
