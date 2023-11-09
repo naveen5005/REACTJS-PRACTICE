@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>noOfRuns</th>
+                <th>noOfBalls</th>
+                <th>noOfFours</th>
+                <th>noOfSixes</th>
+                <th>strikeRate</th>
+                <th>DELETE</th>
+                <th>EDIT</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script src="./players.js"></script>
+    <script>
+        // console.log(players);
+
+        let allFilteredPlayers = [];
+        function displayPlayers(players) {
+            document.querySelector("tbody").innerHTML ="";
+            players.forEach((player, i) => {
+                var myTr = document.createElement("tr");
+                for (a in player) {
+                    var myTd = document.createElement("td");
+                    myTd.innerHTML = player[a]
+                    myTr.appendChild(myTd);
+                }
+                var deleteTd = document.createElement("td");
+                var deleteBtn = document.createElement("button");
+                deleteBtn.innerHTML = "delete"
+                deleteBtn.setAttribute("onclick", "deletePlayer(" + i + ")");
+                deleteTd.appendChild(deleteBtn);
+                myTr.appendChild(deleteTd);
+
+
+                document.querySelector("tbody").appendChild(myTr);
+            })
+
+        }
+        function deletePlayer(i) {
+            if (allFilteredPlayers.length == 0) {
+                allFilteredPlayers = players.filter((data, index) => {
+                    return index !== i;
+                })
+            } else {
+                allFilteredPlayers = allFilteredPlayers.filter((data, index) => {
+                    return index !== i;
+                })
+            }
+            displayPlayers(allFilteredPlayers);
+        }
+        displayPlayers(players);
+    </script>
+</body>
+
+</html>
