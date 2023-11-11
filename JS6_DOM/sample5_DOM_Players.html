@@ -24,12 +24,45 @@
         <tbody>
 
         </tbody>
-    </table>
+    </table> <br><br><br>
+
+
+
+    <form action="">
+        <label for="">player Name : </label>
+        <input type="text" name="playerName" id="" value={playerObj.playerName}> <br>
+
+        <label for="">No Of Runs : </label>
+        <input type="number" name="runs" id=""> <br>
+
+        <label for="">No Of Balls : </label>
+        <input type="number" name="balls" id=""> <br>
+
+        <label for="">No Of Fours : </label>
+        <input type="number" name="fours" id=""> <br>
+
+        <label for="">No Of Sixes : </label>
+        <input type="number" name="sixes" id=""> <br>
+
+        <label for="">Strike Rate : </label>
+        <input type="number" name="strike" id=""> <br> <br>
+
+        <button type="button" onclick="getPlayers()">Add player details</button>
+    </form>
+
 
     <script src="./players.js"></script>
     <script>
         // console.log(players);
 
+        var playerObj ={
+            playerName : "",
+            runs : "",
+            balls:"",
+            fours:"",
+            sixes : "",
+            strike:""
+        }
         let allFilteredPlayers = [];
         function displayPlayers(players) {
             document.querySelector("tbody").innerHTML ="";
@@ -47,6 +80,13 @@
                 deleteTd.appendChild(deleteBtn);
                 myTr.appendChild(deleteTd);
 
+                var editTd = document.createElement("td");
+                var editBtn = document.createElement("button");
+                editBtn.innerHTML="edit";
+                editBtn.setAttribute("onclick","editPlayer("+i+")");
+                editTd.appendChild(editBtn);
+                myTr.appendChild(editTd);
+
 
                 document.querySelector("tbody").appendChild(myTr);
             })
@@ -63,6 +103,13 @@
                 })
             }
             displayPlayers(allFilteredPlayers);
+        }
+
+        function editPlayer(i){
+            console.log(players[i])
+        }
+        function getPlayers(){
+            console.log("action triggered...!!!")
         }
         displayPlayers(players);
     </script>
