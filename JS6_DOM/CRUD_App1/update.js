@@ -24,12 +24,18 @@ function editUser(i) {
         else if (a == "subjects") {
             // console.log(newUser[a]);
             var allSubjects = document.getElementsByName("subjects");
-            newUser[a].forEach((data) => {
-                allSubjects.forEach((element) => {
-                    if(data == element.value){
-                        element.checked = true
-                    }
-                })
+            // newUser[a].forEach((data) => {
+            //     allSubjects.forEach((element) => {
+            //         if(data == element.value){
+            //             element.checked = true
+            //         }
+            //     })
+            // })
+            allSubjects.forEach((element)=>{
+                var check = newUser[a].find((stream)=>stream === element.value);
+                if(check){
+                    element.checked = true;
+                }
             })
 
         }

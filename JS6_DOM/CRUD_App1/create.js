@@ -37,12 +37,12 @@ function addUser() {
         }
         else if (a == "subjects") {
             var allSubjects = document.getElementsByName("subjects");
-            // console.log(allSubjects)
             allSubjects.forEach((element) => {
                 if (element.checked) {
                     user.subjects.push(element.value);
                 }
             })
+            console.log(allSubjects);
         }
     }
     users.push(user)
